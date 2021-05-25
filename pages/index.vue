@@ -143,7 +143,7 @@ export default {
       meta: [
         { hid: 'description', property: 'description', content: this.$store.state.user.user.title },
         { hid: 'og:title', property: 'og:title', content: this.$store.state.user.user.title },
-        { hid: 'og:description', property: 'og:description', content: `${this.$store.state.user.user.title} ร่วมจองโคมจุดประทีปออนไลน์ ในวันมาฆบูชา` },
+        { hid: 'og:description', property: 'og:description', content: `${this.$store.state.user.user.title} ลงชื่อเพื่อ ร่วมเป็น 1 ในผู้สถาปนา ในวันวิสาขบูชาโลก ออนไลน์ ครั้งที่1` },
         { hid: 'og:url', property: 'og:url', content: this.item.url },
         { hid: 'og:image', property: 'og:image', content: this.$store.state.user.user.coverImage },
 
@@ -181,7 +181,7 @@ export default {
       return `https://${domain}/${this.$route.path}`
     },
     titleName () {
-      return `${this.inputField} ร่วมจองโคมจุดประทีปออนไลน์ ในวันมาฆบูชา`
+      return `${this.inputField} ลงชื่อเพื่อ ร่วมเป็น 1 ในผู้สถาปนา ในวันวิสาขบูชาโลก ออนไลน์ ครั้งที่1`
     },
     coverImg () {
       const name = this.inputField

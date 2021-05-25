@@ -212,39 +212,37 @@ export default {
       // eslint-disable-next-line no-console
       // console.log(this.$store.state.user.user.coverImage)
       // eslint-disable-next-line no-undef
-      if (liff.getContext().type !== 'none') {
-        try {
+      try {
         // eslint-disable-next-line no-undef
-          await liff.sendMessages([
-            {
-              type: 'sticker',
-              stickerId: 2,
-              packageId: 1
+        await liff.sendMessages([
+          {
+            type: 'sticker',
+            stickerId: 2,
+            packageId: 1
 
-            },
-            {
-              type: 'image',
-              originalContentUrl: this.$store.state.user.user.coverImage,
-              previewImageUrl: this.$store.state.user.user.coverImage
-            }
-          ])
-          alert('ส่งการ์ดไปให้คุณแล้ว')
-          // eslint-disable-next-line no-undef
-          // liff.closeWindow()
-        } catch (e) {
-          // eslint-disable-next-line no-console
-          console.log(e)
-          // eslint-disable-next-line no-undef
-          const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || '').split('.')
-
-          if (minorVer === undefined) {
-            alert('Message was canceled in external browser')
-            return
+          },
+          {
+            type: 'image',
+            originalContentUrl: this.$store.state.user.user.coverImage,
+            previewImageUrl: this.$store.state.user.user.coverImage
           }
+        ])
+        alert('ส่งการ์ดไปให้คุณแล้ว')
+        // eslint-disable-next-line no-undef
+        // liff.closeWindow()
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.log(e)
+        // eslint-disable-next-line no-undef
+        const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || '').split('.')
 
-          if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
-            alert('Message was canceled in LINE app')
-          }
+        if (minorVer === undefined) {
+          alert('Message was canceled in external browser')
+          return
+        }
+
+        if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+          alert('Message was canceled in LINE app')
         }
       }
     },
