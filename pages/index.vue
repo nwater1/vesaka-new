@@ -225,7 +225,7 @@ export default {
       } else {
         // console.log('no login')
         // eslint-disable-next-line no-undef
-        liff.login()
+        // liff.login()
       }
     })
     // console.log(this.user)

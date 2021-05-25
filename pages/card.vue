@@ -33,9 +33,9 @@
     <v-row justify="center" align="center" style="padding-bottom: 30px">
       <AppButtonLine
 
-        @click="sendMessage"
+        @click="saveImg"
       >
-        <i class="fab fa-line" /> ส่งการ์ดในไลน์
+        <i class="fab fa-line" /> ดาวน์โหลดการ์ด
       </AppButtonLine>
     </v-row>
     <v-row justify="center" align="center" style="padding-bottom: 20px">
@@ -108,15 +108,16 @@ export default {
   },
   async mounted () {
     // eslint-disable-next-line no-undef
-    await liff.init({ liffId: '1656023598-jbmRQA1P' })
-    // eslint-disable-next-line no-undef
-    if (liff.isLoggedIn()) {
-      this.getUserProfile()
+    await liff.init({ liffId: '1656023598-jbmRQA1P' }).then(() => {
       // eslint-disable-next-line no-undef
-    } else {
+      if (liff.isLoggedIn()) {
+        this.getUserProfile()
       // eslint-disable-next-line no-undef
-      liff.login({ redirectUri: 'https://master.d1xnc86zjtxdwi.amplifyapp.com/' })
-    }
+      } else {
+      // eslint-disable-next-line no-undef
+      //  liff.login({ redirectUri: 'https://master.d1xnc86zjtxdwi.amplifyapp.com/' })
+      }
+    })
 
     const id = this.$route.params.id
     this.name = id
@@ -148,10 +149,11 @@ export default {
     },
     saveImg () {
       // eslint-disable-next-line no-undef
-      liff.openWindow({
-        url: this.$store.state.user.user.coverImage,
-        external: true
-      })
+      // liff.openWindow({
+      //   url: this.$store.state.user.user.coverImage,
+      //   external: true
+      // })
+      this.downloadImage(this.$store.state.user.user.coverImage)
     },
     async sharel () {
       // eslint-disable-next-line no-undef
@@ -326,6 +328,18 @@ export default {
           alert('ShareTargetPicker was canceled in LINE app')
         }
       }
+    },
+    async downloadImage (imageSrc) {
+      const image = await fetch(imageSrc)
+      const imageBlog = await image.blob()
+      const imageURL = URL.createObjectURL(imageBlog)
+
+      const link = document.createElement('a')
+      link.href = imageURL
+      link.download = 'vesakaWorldOnline-1st'
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
     }
   }
 }
