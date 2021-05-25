@@ -78,8 +78,7 @@
               <h4>ลงชื่อสำเร็จแล้ว</h4>
             </v-card-title>
             <v-card-text class="d-flex justify-center mb-6">
-              <h5 style="text-align: center;">
-              </h5>
+              <h5 style="text-align: center;" />
             </v-card-text>
             <v-card-actions>
               <v-spacer />
@@ -187,7 +186,7 @@ export default {
     coverImg () {
       const name = this.inputField
       if (name) {
-        return `https://res.cloudinary.com/dda7dxqvr/image/upload/w_300,c_fit,l_text:sarabun.ttf_39:${name},y_220,co_rgb:3E2914/indexcard2.jpg`
+        return `https://res.cloudinary.com/dda7dxqvr/image/upload/w_300,c_fit,l_text:sarabun.ttf_39:${name},y_220,co_rgb:3E2914/indexcard3.jpg`
       } else {
         return 'https://res.cloudinary.com/dda7dxqvr/image/upload/v1621888519/cardindex.jpg'
       }
